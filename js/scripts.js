@@ -11,6 +11,7 @@ Age.prototype.toSeconds = function(){
   this.seconds = Math.floor(this.years * 31536000);
 };
 
+exports.ageModule = Age;
 
 //user interface logic - located here for testing only
 // $(document).ready(function() {
@@ -48,4 +49,3 @@ Age.prototype.toSeconds = function(){
 //   });
 //
 // });
-exports.AgeModule = Age;

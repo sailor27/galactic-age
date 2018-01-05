@@ -12,6 +12,7 @@ Age.prototype.toSeconds = function(){
   this.seconds = Math.floor(this.years * 31536000);
 };
 
+exports.ageModule = Age;
 
 //user interface logic - located here for testing only
 // $(document).ready(function() {
@@ -49,12 +50,11 @@ Age.prototype.toSeconds = function(){
 //   });
 //
 // });
-exports.AgeModule = Age;
 
 },{}],2:[function(require,module,exports){
 //test1
 var Age = require('./../js/scripts.js').ageModule;
-
+// var Age = require('./../js/scripts.js').ageModule;
 $(document).ready(function() {
   $("form#age-form").submit(function(event){
     event.preventDefault();
