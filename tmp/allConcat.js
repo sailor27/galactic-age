@@ -32,10 +32,17 @@ $(document).ready(function() {
     var age = age;
     console.log(yourAge);
     yourAge.getAge();
-    console.log(yourAge);
+    console.log(yourAge.age + " seconds on Earth");
     yourAge.toYears();
-    console.log(yourAge);
-
+    console.log(yourAge.age + " years on Earth");
+    yourAge.toMercury();
+    console.log(yourAge.age + " on Mercury");
+    yourAge.toVenus();
+    console.log(yourAge.age + " on Venus");
+    yourAge.toMars();
+    console.log(yourAge.age + " on Mars");
+    yourAge.toJupiter();
+    console.log(yourAge.age + " on Jupiter");
   });
 //moment testing
   $('#time').text(moment());

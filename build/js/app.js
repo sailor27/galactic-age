@@ -29,6 +29,18 @@ Age2.prototype.getAge = function(){
 Age2.prototype.toYears = function(){
   this.age = (this.age / 31556952);
 }
+Age2.prototype.toMercury = function(){
+  this.age = (this.age / .24);
+}
+Age2.prototype.toVenus = function(){
+  this.age = (this.age / .62);
+}
+Age2.prototype.toMars = function(){
+  this.age = (this.age / 1.88);
+}
+Age2.prototype.toJupiter = function(){
+  this.age = (this.age / 11.86);
+}
 exports.age2Module = Age2;
 
 },{}],2:[function(require,module,exports){
@@ -66,10 +78,17 @@ $(document).ready(function() {
     var age = age;
     console.log(yourAge);
     yourAge.getAge();
-    console.log(yourAge);
+    console.log(yourAge.age + " seconds on Earth");
     yourAge.toYears();
-    console.log(yourAge);
-
+    console.log(yourAge.age + " years on Earth");
+    yourAge.toMercury();
+    console.log(yourAge.age + " on Mercury");
+    yourAge.toVenus();
+    console.log(yourAge.age + " on Venus");
+    yourAge.toMars();
+    console.log(yourAge.age + " on Mars");
+    yourAge.toJupiter();
+    console.log(yourAge.age + " on Jupiter");
   });
 //moment testing
   $('#time').text(moment());
