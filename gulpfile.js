@@ -20,6 +20,7 @@ var lib = require('bower-files')({
     }
   }
 });
+var sourcemaps = require('gulp-sourcemaps');
 
 //linter to run on all files in js folder//
 gulp.task('jshint', function(){
@@ -63,7 +64,7 @@ gulp.task("build", ['clean'], function(){
   } else {
     gulp.start('jsBrowserify');
   }
-  // gulp.start('bower');
+  gulp.start('bower');
   // gulp.start('cssBuild');
 });
 
@@ -75,6 +76,21 @@ gulp.task('serve', function() {
       index: "index.html"
     }
   });
+  // set up gulp watch to update the server//
+  gulp.watch(['js/*.js'], ['jsBuild']);
+  gulp.watch(['bower.json'], ['bowerBuild']);
+  gulp.watch(['*.html'], ['htmlBuild']);
+});
+gulp.task('jsBuild', ['jsBrowserify', 'jshint'], function(){
+  browserSync.reload();
+});
+
+gulp.task('bowerBuild', ['bower'], function(){
+  browserSync.reload();
+});
+
+gulp.task('htmlBuild', function(){
+  browserSync.reload();
 });
 
 //VENDOR FILE MANAGEMENT
