@@ -9,6 +9,18 @@ var utilities = require('gulp-util');
 var del = require('del');
 var buildProduction = utilities.env.production;
 var browserSync = require('browser-sync').create();
+var lib = require('bower-files')({
+  "overrides":{
+    "bootstrap": {
+      "main": [
+        "less/bootstrap.less",
+        "dist/css/bootstrap.css",
+        "dist/js/bootstrap.js"
+      ]
+    }
+  }
+});
+
 //linter to run on all files in js folder//
 gulp.task('jshint', function(){
   return gulp.src(['js/*.js'])
@@ -55,7 +67,7 @@ gulp.task("build", ['clean'], function(){
   // gulp.start('cssBuild');
 });
 
-//build a local server to work on your development build//
+// SERVE build a local server to work on your development build//
 gulp.task('serve', function() {
   browserSync.init({
     server: {
@@ -64,3 +76,20 @@ gulp.task('serve', function() {
     }
   });
 });
+
+//VENDOR FILE MANAGEMENT
+//use bower to concat and minify all vendor js files//
+gulp.task('bowerJS', function() {
+  return gulp.src(lib.ext('js').files)
+    .pipe(concat('vendor.min.js'))
+    .pipe(uglify())
+    .pipe(gulp.dest('./build/js'));
+});
+//do the same with the vendor css files //
+gulp.task('bowerCSS', function() {
+  return gulp.src(lib.ext('css').files)
+    .pipe(concat('vendor.css'))
+    .pipe(gulp.dest('./build/css'));
+});
+//do both with one gulp task//
+gulp.task('bower', ['bowerJS', 'bowerCSS']);

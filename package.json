@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/sailor27/galactic-age#readme",
   "devDependencies": {
+    "bower-files": "^4.0.0",
     "browser-sync": "^2.23.3",
     "browserify": "^15.0.0",
     "del": "^3.0.0",
