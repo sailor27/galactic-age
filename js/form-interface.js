@@ -33,6 +33,8 @@ $(document).ready(function() {
     console.log(yourAge);
     yourAge.getAge();
     console.log(yourAge);
+    yourAge.toYears();
+    console.log(yourAge);
 
   });
 //moment testing
