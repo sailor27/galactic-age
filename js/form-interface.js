@@ -26,6 +26,8 @@ $(document).ready(function() {
     event.preventDefault();
     var inputtedBirthday = $("#birthday").val();
     console.log(inputtedBirthday);
+    var inputtedBirthday = moment(inputtedBirthday);
+    console.log(inputtedBirthday);
     var yourAge = new Age2(inputtedBirthday, age);
     var age = age;
     console.log(yourAge);

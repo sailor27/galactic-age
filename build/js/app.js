@@ -15,27 +15,26 @@ Age.prototype.toSeconds = function(){
 exports.ageModule = Age;
 ///////////////////////////////////////////////////////
 //testing for moment
-var today = moment('2018-01-05 14:12:05');
-var birthday = moment('1990-06-27 14:12:05');
-
-var arge = birthday.diff(today);
-alert(arge);
+var today = moment();
+var sailor = moment('1990-06-27 14:49:55');
 
 
 
+// var birthday = moment('1990-06-27 14:12:05');
+//
+// var arge = birthday.diff(today);
+// alert(arge);
 
-
-
+// var squarge = arge.toSeconds();
+// console.log(squarge);
 
 function Age2(birthday, age){
   this.birthday = birthday;
   this.age = age;
 }
 
-
-
 Age2.prototype.getAge = function(){
-  this.age = Math.floor(now - this.birthday);
+  this.age = today.diff(this.birthday, 'seconds');
 }
 exports.age2Module = Age2;
 
@@ -67,6 +66,8 @@ $(document).ready(function() {
   $("form#birthday-form").submit(function(event){
     event.preventDefault();
     var inputtedBirthday = $("#birthday").val();
+    console.log(inputtedBirthday);
+    var inputtedBirthday = moment(inputtedBirthday);
     console.log(inputtedBirthday);
     var yourAge = new Age2(inputtedBirthday, age);
     var age = age;
