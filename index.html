@@ -2,13 +2,18 @@
 <html>
   <head>
     <link rel="stylesheet" href="build/css/vendor.css">
-
+    <script src="bower_components/moment/min/moment.min.js"></script>
     <script src="build/js/vendor.min.js" charset="utf-8"></script>
     <script src="build/js/app.js" charset="utf-8"></script>
     <meta charset="utf-8">
     <title>Galactic Age Calculator</title>
   </head>
   <body>
+    <div class="jumbotron">
+      <h3>Well look at the time! </h3>
+      <h3 id="time"></h3>
+
+    </div>
     <form id="age-form">
       <label for="age">Enter your age on Earth</label>
       <input type="number" id="age" value="">

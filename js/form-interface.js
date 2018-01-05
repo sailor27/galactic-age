@@ -25,14 +25,15 @@ $(document).ready(function() {
     console.log(day);
   });
 
-//testing for moment
-// var now = moment();
-// console.log(now);
 
   $("form#birthday-form").submit(function(event){
     event.preventDefault();
     var inputtedBirthday = $("#birthday").val();
     console.log(inputtedBirthday);
   });
+  //testing for moment
 
+  // var now = moment();
+  // console.log(now);
+  $('#time').text(moment());
 });
