@@ -1,10 +1,23 @@
 // script test
-// function Year(input, seconds){
-//   this.input = input;
-//   this.toSeconds();
-// }
 
-var toSeconds = function(years){
-  var seconds = Math.floor(years * 31536000);
-  console.log(seconds);
+function Age(years, seconds){
+  this.years = years;
+  this.seconds = seconds;
+}
+
+Age.prototype.toSeconds = function(){
+  this.seconds = Math.floor(this.years * 31536000);
+
 };
+
+$(document).ready(function() {
+  $("form#age-form").submit(function(event){
+    event.preventDefault();
+    var inputtedAge = $("#age").val();
+    var currentAge = new Age(inputtedAge);
+    console.log(inputtedAge);
+    console.log(currentAge);
+    currentAge.toSeconds();
+    console.log(currentAge);
+  });
+});
