@@ -8,6 +8,7 @@ var uglify = require('gulp-uglify');
 var utilities = require('gulp-util');
 var del = require('del');
 var buildProduction = utilities.env.production;
+var browserSync = require('browser-sync').create();
 //linter to run on all files in js folder//
 gulp.task('jshint', function(){
   return gulp.src(['js/*.js'])
@@ -52,4 +53,14 @@ gulp.task("build", ['clean'], function(){
   }
   // gulp.start('bower');
   // gulp.start('cssBuild');
+});
+
+//build a local server to work on your development build//
+gulp.task('serve', function() {
+  browserSync.init({
+    server: {
+      baseDir: "./",
+      index: "index.html"
+    }
+  });
 });
