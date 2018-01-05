@@ -5,8 +5,9 @@ $(document).ready(function() {
   $("form#age-form").submit(function(event){
     event.preventDefault();
     var inputtedAge = $("#age").val();
-    var currentAge = new Age(inputtedAge);
     console.log(inputtedAge);
+
+    var currentAge = new Age();
     console.log(currentAge);
     currentAge.toSeconds();
     console.log(currentAge);

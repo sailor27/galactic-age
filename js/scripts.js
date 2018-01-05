@@ -12,7 +12,8 @@ Age.prototype.toSeconds = function(){
 //   $("form#age-form").submit(function(event){
 //     event.preventDefault();
 //     var inputtedAge = $("#age").val();
-//     var currentAge = new Age(inputtedAge);
+//     var seconds = 2;
+//     var currentAge = new Age(inputtedAge, seconds);
 //     console.log(inputtedAge);
 //     console.log(currentAge);
 //     currentAge.toSeconds();
