@@ -7,7 +7,7 @@ var jshint = require('gulp-jshint');
 var uglify = require('gulp-uglify');
 var utilities = require('gulp-util');
 var del = require('del');
-
+var buildProduction = utilities.env.production;
 //linter to run on all files in js folder//
 gulp.task('jshint', function(){
   return gulp.src(['js/*.js'])
@@ -35,4 +35,21 @@ gulp.task("minifyScripts", ["jsBrowserify"], function(){
   return gulp.src("./build/js/app.js")
     .pipe(uglify())
     .pipe(gulp.dest("./build/js"));
+});
+
+//delete old build and temp folders (when you run build)
+gulp.task("clean", function(){
+  return del(['build', 'tmp']);
+});
+
+
+//BUILD
+gulp.task("build", ['clean'], function(){
+  if (buildProduction) {
+    gulp.start('minifyScripts');
+  } else {
+    gulp.start('jsBrowserify');
+  }
+  // gulp.start('bower');
+  // gulp.start('cssBuild');
 });
