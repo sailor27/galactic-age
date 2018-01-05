@@ -1,12 +1,12 @@
 var gulp = require('gulp');
-var gulp = require('gulp');
 var browserify = require('browserify');
 var source = require('vinyl-source-stream');
 var concat = require('gulp-concat');
 var uglify = require('gulp-uglify');
-var utilities = require('gulp-util');
 var jshint = require('gulp-jshint');
-
+var uglify = require('gulp-uglify');
+var utilities = require('gulp-util');
+var del = require('del');
 
 //linter to run on all files in js folder//
 gulp.task('jshint', function(){
@@ -28,4 +28,11 @@ gulp.task('jsBrowserify', ['concatInterface'], function() {
     .bundle()
     .pipe(source('app.js'))
     .pipe(gulp.dest('./build/js'));
+});
+
+//minifying scripts, Browserify must run first - then place in build folder//
+gulp.task("minifyScripts", ["jsBrowserify"], function(){
+  return gulp.src("./build/js/app.js")
+    .pipe(uglify())
+    .pipe(gulp.dest("./build/js"));
 });
