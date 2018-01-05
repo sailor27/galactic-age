@@ -1,0 +1,17 @@
+{
+  "name": "galactic-age",
+  "description": "",
+  "main": "index.js",
+  "authors": [
+    "Sailor Winkelman"
+  ],
+  "license": "ISC",
+  "homepage": "",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
