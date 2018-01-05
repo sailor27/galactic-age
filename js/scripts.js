@@ -14,14 +14,24 @@ Age.prototype.toSeconds = function(){
 exports.ageModule = Age;
 ///////////////////////////////////////////////////////
 //testing for moment
+var today = moment('2018-01-05 14:12:05');
+var birthday = moment('1990-06-27 14:12:05');
 
-var now = moment();
-console.log(now);
+var arge = birthday.diff(today);
+alert(arge);
+
+
+
+
+
+
 
 function Age2(birthday, age){
   this.birthday = birthday;
   this.age = age;
 }
+
+
 
 Age2.prototype.getAge = function(){
   this.age = Math.floor(now - this.birthday);
