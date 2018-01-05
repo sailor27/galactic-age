@@ -1,5 +1,6 @@
 //test1
 var Age = require('./../js/scripts.js').ageModule;
+var Age2 = require('./../js/scripts.js').age2Module;
 // var Age = require('./../js/scripts.js').ageModule;
 $(document).ready(function() {
   $("form#age-form").submit(function(event){
@@ -18,11 +19,6 @@ $(document).ready(function() {
 
     currentAge.toSeconds();
     console.log(currentAge);
-
-//testing for JS date constructor
-    var Xmas95 = new Date('December 25, 1995 23:15:30');
-    var day = Xmas95.getDate();
-    console.log(day);
   });
 
 
@@ -30,10 +26,15 @@ $(document).ready(function() {
     event.preventDefault();
     var inputtedBirthday = $("#birthday").val();
     console.log(inputtedBirthday);
-  });
-  //testing for moment
+    var yourAge = new Age2(inputtedBirthday, age);
+    var age = age;
+    console.log(yourAge);
+    yourAge.getAge();
+    console.log(yourAge);
 
-  // var now = moment();
-  // console.log(now);
+  });
+//moment testing
   $('#time').text(moment());
+
+
 });
