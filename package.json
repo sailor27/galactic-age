@@ -35,10 +35,9 @@
     "karma-chrome-launcher": "^2.2.0",
     "karma-jasmine-html-reporter": "^0.2.2",
     "karma-jquery": "^0.2.2",
+    "moment": "^2.20.1",
     "vinyl-source-stream": "^2.0.0",
     "watchify": "^3.9.0"
   },
-  "dependencies": {
-    "moment": "^2.20.1"
-  }
+  "dependencies": {}
 }

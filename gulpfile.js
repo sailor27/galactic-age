@@ -21,6 +21,7 @@ var lib = require('bower-files')({
   }
 });
 var sourcemaps = require('gulp-sourcemaps');
+// var moment = require('moment');
 
 //linter to run on all files in js folder//
 gulp.task('jshint', function(){

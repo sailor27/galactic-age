@@ -1,12 +1,9 @@
 (function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);var f=new Error("Cannot find module '"+o+"'");throw f.code="MODULE_NOT_FOUND",f}var l=n[o]={exports:{}};t[o][0].call(l.exports,function(e){var n=t[o][1][e];return s(n?n:e)},l,l.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(require,module,exports){
-
+//age in seconds
 function Age(years, seconds){
   this.years = years;
   this.seconds = seconds;
 }
-
-//date constructor is built into javascript
-// function Date(year, month, day, hours, minutes, seconds, milliseconds);
 
 Age.prototype.toSeconds = function(){
   this.seconds = Math.floor(this.years * 31556952);
@@ -18,17 +15,22 @@ exports.ageModule = Age;
 var today = moment();
 var sailor = moment('1990-06-27 14:49:55');
 
+
+//age constructor for age by birthday
 function Age2(birthday, age){
   this.birthday = birthday;
   this.age = age;
 }
-
+// get age using birthday and current date
 Age2.prototype.getAge = function(){
   this.age = today.diff(this.birthday, 'seconds');
 }
+// convert age to years
 Age2.prototype.toYears = function(){
   this.age = (this.age / 31556952);
 }
+
+//calculate age on other planets
 Age2.prototype.toMercury = function(){
   this.age = (this.age / .24);
 }
@@ -41,6 +43,7 @@ Age2.prototype.toMars = function(){
 Age2.prototype.toJupiter = function(){
   this.age = (this.age / 11.86);
 }
+//export age2 module
 exports.age2Module = Age2;
 
 },{}],2:[function(require,module,exports){

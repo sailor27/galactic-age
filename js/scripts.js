@@ -1,11 +1,8 @@
-
+//age in seconds
 function Age(years, seconds){
   this.years = years;
   this.seconds = seconds;
 }
-
-//date constructor is built into javascript
-// function Date(year, month, day, hours, minutes, seconds, milliseconds);
 
 Age.prototype.toSeconds = function(){
   this.seconds = Math.floor(this.years * 31556952);
@@ -17,17 +14,22 @@ exports.ageModule = Age;
 var today = moment();
 var sailor = moment('1990-06-27 14:49:55');
 
+
+//age constructor for age by birthday
 function Age2(birthday, age){
   this.birthday = birthday;
   this.age = age;
 }
-
+// get age using birthday and current date
 Age2.prototype.getAge = function(){
   this.age = today.diff(this.birthday, 'seconds');
 }
+// convert age to years
 Age2.prototype.toYears = function(){
   this.age = (this.age / 31556952);
 }
+
+//calculate age on other planets
 Age2.prototype.toMercury = function(){
   this.age = (this.age / .24);
 }
@@ -40,4 +42,5 @@ Age2.prototype.toMars = function(){
 Age2.prototype.toJupiter = function(){
   this.age = (this.age / 11.86);
 }
+//export age2 module
 exports.age2Module = Age2;
