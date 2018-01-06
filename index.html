@@ -10,7 +10,6 @@
   </head>
   <body>
     <div class="container">
-
       <div class="jumbotron">
         <h3>Well look at the time! </h3>
         <h3 id="time"></h3>
@@ -22,11 +21,39 @@
         <button type="submit" name="button" class="btn">go</button>
       </form>
       <form id="birthday-form">
-        <label for="birthday">Enter your birthday in this format'1990-06-27 14:12:05'</label>
+        <label for="birthday">Enter your birthday in this format '1990-06-27 14:12:05'</label>
         <input type="text" id="birthday" value="">
         <button type="submit" name="button"class="btn">go</button>
       </form>
-    </div>
+
+      <div class="">
+        <h5>Calculate your life expectancy</h5>
+        <form id="life">
+          <div class="form-check">
+            <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="-5" checked>
+            <label class="form-check-label" for="exampleRadios1">
+              Smokes Cigarettes
+            </label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios2" value="2">
+            <label class="form-check-label" for="exampleRadios2">
+              Has a nutrious diet
+            </label>
+          </div>
+          <div class="form-check disabled">
+            <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios3" value="1" disabled>
+            <label class="form-check-label" for="exampleRadios3">
+              Equipped with oxygen supply
+            </label>
+          </div>
+          <button type="submit" name="button"class="btn">go</button>
+        </form><!-- life form -->
+
+      </div>
+    </div> <!-- container -->
+
+
 
   </body>
 </html>
