@@ -24,9 +24,9 @@ $(document).ready(function() {
 
   $("form#birthday-form").submit(function(event){
     event.preventDefault();
-    var inputtedBirthday = $("#birthday").val();
-    console.log(inputtedBirthday);
-    var inputtedBirthday = moment(inputtedBirthday);
+    // var inputtedBirthday = $("#birthday").val();
+    // console.log(inputtedBirthday);
+    var inputtedBirthday = moment($("#birthday").val());
     console.log(inputtedBirthday);
     var yourAge = new Age2(inputtedBirthday, age);
     var age = age;
