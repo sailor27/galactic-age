@@ -44,3 +44,10 @@ Age2.prototype.toJupiter = function(){
 };
 //export age2 module
 exports.age2Module = Age2;
+
+// function You(birthday, age)
+
+//calculate life expectancy
+var averageUS = 78.74;
+var averageCA = 82.14;
+var averageJP = 83.84;

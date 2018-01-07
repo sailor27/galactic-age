@@ -46,6 +46,13 @@ Age2.prototype.toJupiter = function(){
 //export age2 module
 exports.age2Module = Age2;
 
+// function You(birthday, age)
+
+//calculate life expectancy
+var averageUS = 78.74;
+var averageCA = 82.14;
+var averageJP = 83.84;
+
 },{}],2:[function(require,module,exports){
 //test1
 var Age = require('./../js/scripts.js').ageModule;
@@ -73,12 +80,9 @@ $(document).ready(function() {
 
   $("form#birthday-form").submit(function(event){
     event.preventDefault();
-    // var inputtedBirthday = $("#birthday").val();
-    // console.log(inputtedBirthday);
-    var inputtedBirthday = moment($("#birthday").val());
+    var inputtedBirthday = $("#birthday").val();
     console.log(inputtedBirthday);
     var yourAge = new Age2(inputtedBirthday, age);
-    var age = age;
     console.log(yourAge);
     yourAge.getAge();
     console.log(yourAge.age + " seconds on Earth");
@@ -92,6 +96,7 @@ $(document).ready(function() {
     console.log(yourAge.age + " on Mars");
     yourAge.toJupiter();
     console.log(yourAge.age + " on Jupiter");
+		console.log(yourAge.age);
   });
 //moment testing
   $('#time').text(moment());

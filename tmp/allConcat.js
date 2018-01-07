@@ -24,12 +24,9 @@ $(document).ready(function() {
 
   $("form#birthday-form").submit(function(event){
     event.preventDefault();
-    // var inputtedBirthday = $("#birthday").val();
-    // console.log(inputtedBirthday);
-    var inputtedBirthday = moment($("#birthday").val());
+    var inputtedBirthday = $("#birthday").val();
     console.log(inputtedBirthday);
     var yourAge = new Age2(inputtedBirthday, age);
-    var age = age;
     console.log(yourAge);
     yourAge.getAge();
     console.log(yourAge.age + " seconds on Earth");
@@ -43,6 +40,7 @@ $(document).ready(function() {
     console.log(yourAge.age + " on Mars");
     yourAge.toJupiter();
     console.log(yourAge.age + " on Jupiter");
+		console.log(yourAge.age);
   });
 //moment testing
   $('#time').text(moment());
