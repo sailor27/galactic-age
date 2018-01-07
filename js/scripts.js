@@ -16,9 +16,10 @@ var sailor = moment('1990-06-27 14:49:55');
 
 
 //age constructor for age by birthday
-function Age2(birthday, age, remaining){
+function Age2(birthday, age, expectancy, remaining){
   this.birthday = birthday;
   this.age = age;
+	this.expectancy = expectancy;
 	this.remaining = remaining;
 }
 // get age using birthday and current date
@@ -49,10 +50,19 @@ exports.age2Module = Age2;
 // function You(birthday, age)
 
 //calculate life expectancy
-var averageUS = 78.74;
-var averageCA = 82.14;
-var averageJP = 83.84;
+// var averageUS = 78.74;
+// var averageCA = 82.14;
+// var averageJP = 83.84;
 
-Age2.prototype.yearsLeft = function(){
-	this.remaining = (averageUS - this.age);
+function Life(age, expectancy, remaining){
+	this.age = age;
+	this.expectancy = expectancy;
+	this.remaining = remaining;
 }
+
+Life.prototype.yearsLeft = function(){
+	this.remaining = (this.expectancy - this.age);
+}
+
+
+exports.lifeModule = Life;

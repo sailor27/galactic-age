@@ -16,34 +16,47 @@
 
       </div>
       <form id="age-form">
+				<h1>Age</h1>
         <label for="age">Enter your age on Earth</label>
         <input type="number" id="age" value="">
         <button type="submit" name="button" class="btn">go</button>
       </form>
       <form id="birthday-form">
+				<h1>How Old am I?</h1>
         <label for="birthday">Enter your birthday in this format '1990-06-27 14:12:05'</label>
         <input type="text" id="birthday" value="">
         <button type="submit" name="button"class="btn">go</button>
       </form>
 
       <div class="">
-        <h5>Calculate your life expectancy</h5>
+				<h1>How many years do I have to live?</h1>
+        <h5>Enter information about yourself</h5>
         <form id="life">
-          <div class="form-check">
-            <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="-5" checked>
-            <label class="form-check-label" for="exampleRadios1">
+					<div class="form-group">
+				    <select id="country"class="custom-select" required>
+				      <option value="">Where do you live?</option>
+				      <option value="78.74">United States</option>
+				      <option value="82.14">Canada</option>
+				      <option value="83.84">Japan</option>
+				    </select>
+				    <!-- <div class="invalid-feedback">Please select a location</div> -->
+				  </div>
+
+				  <div class="form-check">
+            <input class="form-check-input" type="radio" name="exampleRadios" id="smokes" value="-5" checked>
+            <label class="form-check-label" for="smokes">
               Smokes Cigarettes
             </label>
           </div>
           <div class="form-check">
-            <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios2" value="2">
-            <label class="form-check-label" for="exampleRadios2">
+            <input class="form-check-input" type="radio" name="exampleRadios" id="diet" value="2">
+            <label class="form-check-label" for="diet">
               Has a nutrious diet
             </label>
           </div>
           <div class="form-check disabled">
-            <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios3" value="1" disabled>
-            <label class="form-check-label" for="exampleRadios3">
+            <input class="form-check-input" type="radio" name="exampleRadios" id="oxygen" value="1" disabled>
+            <label class="form-check-label" for="oxygen">
               Equipped with oxygen supply
             </label>
           </div>

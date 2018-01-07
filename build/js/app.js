@@ -17,9 +17,10 @@ var sailor = moment('1990-06-27 14:49:55');
 
 
 //age constructor for age by birthday
-function Age2(birthday, age, remaining){
+function Age2(birthday, age, expectancy, remaining){
   this.birthday = birthday;
   this.age = age;
+	this.expectancy = expectancy;
 	this.remaining = remaining;
 }
 // get age using birthday and current date
@@ -50,18 +51,28 @@ exports.age2Module = Age2;
 // function You(birthday, age)
 
 //calculate life expectancy
-var averageUS = 78.74;
-var averageCA = 82.14;
-var averageJP = 83.84;
+// var averageUS = 78.74;
+// var averageCA = 82.14;
+// var averageJP = 83.84;
 
-Age2.prototype.yearsLeft = function(){
-	this.remaining = (averageUS - this.age);
+function Life(age, expectancy, remaining){
+	this.age = age;
+	this.expectancy = expectancy;
+	this.remaining = remaining;
 }
+
+Life.prototype.yearsLeft = function(){
+	this.remaining = (this.expectancy - this.age);
+}
+
+
+exports.lifeModule = Life;
 
 },{}],2:[function(require,module,exports){
 //test1
 var Age = require('./../js/scripts.js').ageModule;
 var Age2 = require('./../js/scripts.js').age2Module;
+var Life = require('./../js/scripts.js').lifeModule;
 // var Age = require('./../js/scripts.js').ageModule;
 $(document).ready(function() {
   $("form#age-form").submit(function(event){
@@ -92,19 +103,57 @@ $(document).ready(function() {
     yourAge.getAge();
     console.log(yourAge.age + " seconds on Earth");
     yourAge.toYears();
-    console.log(yourAge.age + " years on Earth");
-		yourAge.yearsLeft();
-		console.log(yourAge.remaining + " years left to live");
+		console.log(yourAge.age + " years on Earth");
+
+		var expectancy = 78.74;
+		var remaining = remaining;
+
+//create earth life and set remaining property to years left on earth
+		var lifeOnEarth = new Life(yourAge.age, expectancy, remaining);
+		console.log(lifeOnEarth);
+		lifeOnEarth.yearsLeft();
+		console.log(lifeOnEarth.remaining + " years left to live on Earth");
+
+//create mercury life and set remaining property to years left on mercury
     yourAge.toMercury();
-    console.log(yourAge.age + " on Mercury");
+    console.log("Your age is " + yourAge.age + " on Mercury");
+		var lifeOnMercury = new Life(yourAge.age, expectancy, remaining);
+		console.log(lifeOnMercury);
+		lifeOnMercury.yearsLeft();
+		console.log(lifeOnMercury.remaining + " years left to live on Mercury");
+
+//create venus life and set remaining property to years left on venus
     yourAge.toVenus();
-    console.log(yourAge.age + " on Venus");
+    console.log("Your age is " + yourAge.age + " on Venus");
+		var lifeOnVenus = new Life(yourAge.age, expectancy, remaining);
+		console.log(lifeOnVenus);
+		lifeOnVenus.yearsLeft();
+		console.log(lifeOnVenus.remaining + " years left to live on Venus");
+
+//create mars life and set remaining property to years left on mars
     yourAge.toMars();
-    console.log(yourAge.age + " on Mars");
+    console.log("Your age is " + yourAge.age + " on Mars");
+		var lifeOnMars = new Life(yourAge.age, expectancy, remaining);
+		console.log(lifeOnMars);
+		lifeOnMars.yearsLeft();
+		console.log(lifeOnMars.remaining + " years left to live on Mars");
+
+//create jupiter life and set remaining property to years left on jupiter
     yourAge.toJupiter();
-    console.log(yourAge.age + " on Jupiter");
-		console.log(yourAge.age);
+    console.log("Your age is " + yourAge.age + " on Jupiter");
+		var lifeOnJupiter = new Life(yourAge.age, expectancy, remaining);
+		console.log(lifeOnJupiter);
+		lifeOnJupiter.yearsLeft();
+		console.log(lifeOnJupiter.remaining + " years left to live on Jupiter");
   });
+
+	$("form#life").submit(function(event){
+		event.preventDefault();
+    var selectedCountry = $("#country").val();
+		var smokes = $("#smokes").val();
+		var diet = $("#diet").val();
+		console.log(selectedCountry, smokes, diet);
+	});
 //moment testing
   $('#time').text(moment());
 
