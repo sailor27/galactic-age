@@ -16,9 +16,10 @@ var sailor = moment('1990-06-27 14:49:55');
 
 
 //age constructor for age by birthday
-function Age2(birthday, age){
+function Age2(birthday, age, remaining){
   this.birthday = birthday;
   this.age = age;
+	this.remaining = remaining;
 }
 // get age using birthday and current date
 Age2.prototype.getAge = function(){
@@ -51,3 +52,7 @@ exports.age2Module = Age2;
 var averageUS = 78.74;
 var averageCA = 82.14;
 var averageJP = 83.84;
+
+Age2.prototype.yearsLeft = function(){
+	this.remaining = (averageUS - this.age);
+}

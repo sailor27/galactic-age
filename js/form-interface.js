@@ -32,6 +32,8 @@ $(document).ready(function() {
     console.log(yourAge.age + " seconds on Earth");
     yourAge.toYears();
     console.log(yourAge.age + " years on Earth");
+		yourAge.yearsLeft();
+		console.log(yourAge.remaining + " years left to live");
     yourAge.toMercury();
     console.log(yourAge.age + " on Mercury");
     yourAge.toVenus();
