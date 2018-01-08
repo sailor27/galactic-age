@@ -1,8 +1,7 @@
 //test1
-var Age = require('./../js/scripts.js').ageModule;
-var Age2 = require('./../js/scripts.js').age2Module;
-var Life = require('./../js/scripts.js').lifeModule;
-// var Age = require('./../js/scripts.js').ageModule;
+import { Age } from './../js/scripts.js';
+import { User } from './../js/scripts.js';
+import { Life } from './../js/scripts.js';
 $(document).ready(function() {
   $("form#age-form").submit(function(event){
     event.preventDefault();
@@ -29,7 +28,7 @@ $(document).ready(function() {
     console.log(inputtedBirthday);
 
 //determine current age using current birthday and current time
-    var yourAge = new Age2(inputtedBirthday, age);
+    var yourAge = new User(inputtedBirthday, age);
     console.log(yourAge);
     yourAge.getAge();
     console.log(yourAge.age + " seconds on Earth");

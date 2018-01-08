@@ -1,68 +1,64 @@
 //age in seconds
-function Age(years, seconds){
-  this.years = years;
-  this.seconds = seconds;
-}
-
-Age.prototype.toSeconds = function(){
-  this.seconds = Math.floor(this.years * 31556952);
+export class Age {
+	constructor(years, seconds){
+	  this.years = years;
+	  this.seconds = seconds;
+	}
+	toSeconds(){
+  	this.seconds = Math.floor(this.years * 31556952);
+	}
 };
 
-exports.ageModule = Age;
+
 ///////////////////////////////////////////////////////
 //testing for moment
-var today = moment();
-var sailor = moment('1990-06-27 14:49:55');
-
+// var today = moment();
+// var sailor = moment('1990-06-27 14:49:55');
 
 //age constructor for age by birthday
-function Age2(birthday, age, expectancy, remaining){
-  this.birthday = birthday;
-  this.age = age;
-	this.expectancy = expectancy;
-	this.remaining = remaining;
-}
+export class User {
+	constructor(birthday, age, expectancy, remaining){
+	  this.birthday = birthday;
+	  this.age = age;
+		this.expectancy = expectancy;
+		this.remaining = remaining;
+	}
 // get age using birthday and current date
-Age2.prototype.getAge = function(){
-  this.age = today.diff(this.birthday, 'seconds');
-};
+	getAge(){
+		var today = moment();
+  	this.age = today.diff(this.birthday, 'seconds');
+	}
 // convert age to years
-Age2.prototype.toYears = function(){
-  this.age = (this.age / 31556952);
-};
-
+	toYears(){
+  	this.age = (this.age / 31556952);
+	}
 //calculate age on other planets
-Age2.prototype.toMercury = function(){
-  this.age = (this.age / 0.24);
-};
-Age2.prototype.toVenus = function(){
+	toMercury(){
+  	this.age = (this.age / 0.24);
+	}
+	toVenus(){
   this.age = (this.age / 0.62);
+	}
+	toMars(){
+  	this.age = (this.age / 1.88);
+	}
+	toJupiter(){
+  	this.age = (this.age / 11.86);
+	}
 };
-Age2.prototype.toMars = function(){
-  this.age = (this.age / 1.88);
-};
-Age2.prototype.toJupiter = function(){
-  this.age = (this.age / 11.86);
-};
-//export age2 module
-exports.age2Module = Age2;
-
-// function You(birthday, age)
 
 //calculate life expectancy
 // var averageUS = 78.74;
 // var averageCA = 82.14;
 // var averageJP = 83.84;
 
-function Life(age, expectancy, remaining){
-	this.age = age;
-	this.expectancy = expectancy;
-	this.remaining = remaining;
-}
-
-Life.prototype.yearsLeft = function(){
-	this.remaining = (this.expectancy - this.age);
-}
-
-
-exports.lifeModule = Life;
+export class Life {
+	constructor(age, expectancy, remaining) {
+		this.age = age;
+		this.expectancy = expectancy;
+		this.remaining = remaining;
+	}
+	yearsLeft() {
+		this.remaining = (this.expectancy - this.age);
+	}
+};
