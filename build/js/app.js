@@ -118,9 +118,9 @@ var Life = exports.Life = function () {
 ;
 
 },{}],2:[function(require,module,exports){
-'use strict';
+"use strict";
 
-var _scripts = require('./../js/scripts.js');
+var _scripts = require("./../js/scripts.js");
 
 $(document).ready(function () {
   $("form#age-form").submit(function (event) {

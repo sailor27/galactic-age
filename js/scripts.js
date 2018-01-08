@@ -37,7 +37,7 @@ export class User {
   	this.age = (this.age / 0.24);
 	}
 	toVenus(){
-  this.age = (this.age / 0.62);
+  	this.age = (this.age / 0.62);
 	}
 	toMars(){
   	this.age = (this.age / 1.88);

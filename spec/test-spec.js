@@ -1,43 +1,54 @@
-import { Age } from './../js/scripts.js';
-import { User } from './../js/scripts.js';
+import { Age, User } from './../js/scripts.js';
+
+//test function to convert age in years to seconds
 describe('toSeconds', function(){
-  it('should test whether inputtedAge in years is used to assign age in seconds', function(){
-    var currentAge = new Age(1, seconds);
-    expect(currentAge.toSeconds()).toEqual(31556952);
+	const years = 1;
+	let age = 0;
+	let currentAge;
+
+	beforeEach(function(){
+		currentAge = new Age(years, age);
+	});
+
+  it('should test whether inputtedAge converts to seconds', function(){
+    expect(currentAge.toSeconds(1)).toEqual(31556952);
   });
 });
-// var User = require('./../js/scripts.js').UserModule;
+
 
 describe('User', function() {
-  var UserConstructor;
+	const birthday = '1990-06-27 20:45:00';
+	const today = '1990-06-27 20:45:00';
+
+  let testUser;
 
   beforeEach(function(){
-    UserConstructor = new User('1990-06-27 14:49:55', age);
+    testUser = new User(birthday, age);
   });
 
+  // it('should test...', function(){
+  //   expect(testUser.getAge()).toEqual(0);
+  // });
+  //
   it('should test...', function(){
-    expect(UserConstructor.getAge()).toEqual(868672459);
-  });
-
-  it('should test...', function(){
-    expect(UserConstructor.toYears()).toEqual(31556952);
+    expect(testUser.toYears()).toEqual(0);
   });
 
 
 //these need converted to years first?
-  it('should test...', function(){
-    expect(UserConstructor.toMercury()).toEqual(this.age / .24);
-  });
-
-  it('should test...', function(){
-    expect(UserConstructor.toVenus()).toEqual(this.age / .62);
-  });
-
-  it('should test...', function(){
-    expect(UserConstructor.toMars()).toEqual(this.age / 1.88);
-  });
-  it('should test...', function(){
-    expect(UserConstructor.toJupiter()).toEqual(this.age / 11.86);
-  });
+  // it('should test...', function(){
+  //   expect(testUser.toMercury()).toEqual(this.age / .24);
+  // });
+  //
+  // it('should test...', function(){
+  //   expect(testUser.toVenus()).toEqual(this.age / .62);
+  // });
+  //
+  // it('should test...', function(){
+  //   expect(testUser.toMars()).toEqual(this.age / 1.88);
+  // });
+  // it('should test...', function(){
+  //   expect(testUser.toJupiter()).toEqual(this.age / 11.86);
+  // });
 
 });
