@@ -27,6 +27,8 @@ $(document).ready(function() {
     event.preventDefault();
     var inputtedBirthday = $("#birthday").val();
     console.log(inputtedBirthday);
+
+//determine current age using current birthday and current time
     var yourAge = new Age2(inputtedBirthday, age);
     console.log(yourAge);
     yourAge.getAge();
@@ -34,6 +36,8 @@ $(document).ready(function() {
     yourAge.toYears();
 		console.log(yourAge.age + " years on Earth");
 
+
+//starter values for Life expectancy
 		var expectancy = 78.74;
 		var remaining = remaining;
 
@@ -55,8 +59,8 @@ $(document).ready(function() {
     yourAge.toVenus();
     console.log("Your age is " + yourAge.age + " on Venus");
 		var lifeOnVenus = new Life(yourAge.age, expectancy, remaining);
-		console.log(lifeOnVenus);
 		lifeOnVenus.yearsLeft();
+		console.log(lifeOnVenus);
 		console.log(lifeOnVenus.remaining + " years left to live on Venus");
 
 //create mars life and set remaining property to years left on mars

@@ -6,7 +6,8 @@ module.exports = function(config) {
     frameworks: ['jquery-3.2.1', 'jasmine', 'browserify'],
     files: [
       'js/*.js',
-      'spec/*-spec.js'
+      'spec/*-spec.js',
+			'bower_components/moment/moment.js'
     ],
     exclude: [
     ],
