@@ -1,8 +1,8 @@
 //age in seconds - do not use
 export class Age {
-	constructor(years, seconds){
+	constructor(years){
 	  this.years = years;
-//	this.seconds = years.toSeconds();
+//	this.seconds = years.toSeconds(); "error: is not a function"
 
 	}
 	toSeconds() {
@@ -20,31 +20,42 @@ export class User {
 	constructor(birthday){
 	  this.birthday = birthday;
 	}
-	
+
 // get age using birthday and current date
+	// getAge(date, birthday){ attempt to use this without age as argument
+	// 	return (date - birthday);
 	getAge(){
-		const today = Date.now();
-		return (today - this.birthday);
+		const date = Date.now();
+		var age = (date - this.birthday);
+		this.age = (age / 31556952000); //WHY 000???
   	// return (this.today).diff(this.birthday, 'seconds');
 	}
-// convert age to years
-	toYears(){
-  	this.age = (this.age / 31556952);
+	toSeconds() {
+		return Math.floor(this.age * 31556952);
 	}
+
 //calculate age on other planets
+
+//question: how to access age inside here if it can't be passed in?
 	toMercury(){
-  	this.age = (this.age / 0.24);
+  	this.mercury = (this.age / 0.24);
 	}
 	toVenus(){
-  	this.age = (this.age / 0.62);
+  	this.venus = (this.age / 0.62);
 	}
 	toMars(){
-  	this.age = (this.age / 1.88);
+  	this.mars = (this.age / 1.88);
 	}
 	toJupiter(){
-  	this.age = (this.age / 11.86);
+  	this.jupiter = (this.age / 11.86);
 	}
 };
+
+// convert age to years
+export const toYears = function(x){
+  	return (x / 31556952000);
+};
+
 
 //calculate life expectancy
 // var averageUS = 78.74;

@@ -11,11 +11,11 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
 //age in seconds - do not use
 var Age = exports.Age = function () {
-	function Age(years, seconds) {
+	function Age(years) {
 		_classCallCheck(this, Age);
 
 		this.years = years;
-		//	this.seconds = years.toSeconds();
+		//	this.seconds = years.toSeconds(); "error: is not a function"
 	}
 
 	_createClass(Age, [{
@@ -45,43 +45,47 @@ var User = exports.User = function () {
 	}
 
 	// get age using birthday and current date
+	// getAge(date, birthday){ attempt to use this without age as argument
+	// 	return (date - birthday);
 
 
 	_createClass(User, [{
 		key: "getAge",
 		value: function getAge() {
-			var today = Date.now();
-			return today - this.birthday;
+			var date = Date.now();
+			var age = date - this.birthday;
+			this.age = age / 31556952000; //WHY 000???
 			// return (this.today).diff(this.birthday, 'seconds');
 		}
-		// convert age to years
-
 	}, {
-		key: "toYears",
-		value: function toYears() {
-			this.age = this.age / 31556952;
+		key: "toSeconds",
+		value: function toSeconds() {
+			return Math.floor(this.age * 31556952);
 		}
+
 		//calculate age on other planets
+
+		//question: how to access age inside here if it can't be passed in?
 
 	}, {
 		key: "toMercury",
 		value: function toMercury() {
-			this.age = this.age / 0.24;
+			this.mercury = this.age / 0.24;
 		}
 	}, {
 		key: "toVenus",
 		value: function toVenus() {
-			this.age = this.age / 0.62;
+			this.venus = this.age / 0.62;
 		}
 	}, {
 		key: "toMars",
 		value: function toMars() {
-			this.age = this.age / 1.88;
+			this.mars = this.age / 1.88;
 		}
 	}, {
 		key: "toJupiter",
 		value: function toJupiter() {
-			this.age = this.age / 11.86;
+			this.jupiter = this.age / 11.86;
 		}
 	}]);
 
@@ -89,6 +93,11 @@ var User = exports.User = function () {
 }();
 
 ;
+
+// convert age to years
+var toYears = exports.toYears = function toYears(x) {
+	return x / 31556952000;
+};
 
 //calculate life expectancy
 // var averageUS = 78.74;
@@ -142,66 +151,89 @@ $(document).ready(function () {
 				var month = $("#month").val();
 				var day = $("#day").val();
 				var hours = $("#hour").val();
-				var minutes = 0;
-				var seconds = 0;
-				var milliseconds = 0;
+				var minutes = "45";
+				var seconds = "55";
+				var milliseconds = "999";
 
-				var inputtedBirthday = new Date(year, month, day, hours, minutes, seconds, milliseconds);
+				//set date to current time as the number of milliseconds since January 1, 1970 00:00:00 UTC
+				var date = Date.now(); //why do i have to define this in both?
+				console.log("TODAY: " + date);
 
-				console.log(inputtedBirthday);
+				//create new birthday using inputted date
+				// const inputtedBirthday = new Date(year, month, day, hours, minutes, seconds, milliseconds); <----- the real constructor for birthdate
+				var inputtedBirthday = new Date("1990", "05", "27", "18", "00", "00");
+				console.log("BIRTHDAY : " + inputtedBirthday);
 
-				//determine current age using current birthday and current time
-				var today = Date.now();
-				var user = new _scripts.User(inputtedBirthday);
-				var ageSeconds = user.getAge();
+				//convert birthday into a number representing number of milliseconds between birthday and January 1, 1970 00:00:00 UTC
+				var weirdBirthday = inputtedBirthday.getTime();
+				console.log("WEIRD BIRTHDAY: " + weirdBirthday);
+				// const aGE = getAge(date, weirdBirthday);
+				// console.log("AGE TEST  " + aGE);
+				//create new user with birthday
+				var user = new _scripts.User(weirdBirthday);
 
-				$("#output").text("Today is " + today + ". You have been alive for " + ageSeconds + " seconds on Earth.");
+				//subtract user's birthday from current date, convert to years, and set number as age
+				user.getAge();
+				console.log("DIFFERENCE : " + user.age);
+				console.log("user.age =" + user.age);
 
-				// yourAge.toYears();
-				// console.log(yourAge.age + " years on Earth");
+				//define age in seconds
+				var ageSeconds = user.toSeconds();
 
+				//format dates to display using moment
+				var dateDisplay = moment(date).format("dddd, MMMM Do YYYY, h:mm:ss a");
+				var birthdayDisplay = moment(user.birthday).format("dddd, MMMM Do YYYY, h:mm:ss a");
+
+				//output text displaying todays date and user's age in seconds
+				$("#output").text("Today is " + dateDisplay + ".");
+
+				$("#output1").text(" You have been alive for " + ageSeconds + " seconds on Earth.");
+				//output text displaying user's age in years
+				$("#output2").text("You have been alive for " + user.age + " years on Earth.");
 
 				//starter values for Life expectancy
 				var expectancy = 78.74;
 				var remaining = remaining;
 
 				//create earth life and set remaining property to years left on earth
-				var lifeOnEarth = new _scripts.Life(user.age, expectancy, remaining);
-				console.log(lifeOnEarth);
-				lifeOnEarth.yearsLeft();
-				console.log(lifeOnEarth.remaining + " years left to live on Earth");
+				// const lifeOnEarth = new Life(user.age, expectancy, remaining);
+				// console.log(lifeOnEarth);
+				// lifeOnEarth.yearsLeft();
+				// console.log(lifeOnEarth.remaining + " years left to live on Earth");
 
 				//create mercury life and set remaining property to years left on mercury
+
 				user.toMercury();
-				console.log("Your age is " + user.age + " on Mercury");
-				var lifeOnMercury = new _scripts.Life(user.age, expectancy, remaining);
-				console.log(lifeOnMercury);
-				lifeOnMercury.yearsLeft();
-				console.log(lifeOnMercury.remaining + " years left to live on Mercury");
+				$("#output3").text("Your age is " + user.mercury + " on Mercury");
+				//
+				// const lifeOnMercury = new Life(user.age, expectancy, remaining);
+				// console.log(lifeOnMercury);
+				// lifeOnMercury.yearsLeft();
+				// console.log(lifeOnMercury.remaining + " years left to live on Mercury");
 
 				//create venus life and set remaining property to years left on venus
 				user.toVenus();
-				console.log("Your age is " + user.age + " on Venus");
-				var lifeOnVenus = new _scripts.Life(user.age, expectancy, remaining);
-				lifeOnVenus.yearsLeft();
-				console.log(lifeOnVenus);
-				console.log(lifeOnVenus.remaining + " years left to live on Venus");
+				$("#output4").text("Your age is " + user.venus + " on Venus");
+				// const lifeOnVenus = new Life(user.age, expectancy, remaining);
+				// lifeOnVenus.yearsLeft();
+				// console.log(lifeOnVenus);
+				// console.log(lifeOnVenus.remaining + " years left to live on Venus");
 
 				//create mars life and set remaining property to years left on mars
 				user.toMars();
-				console.log("Your age is " + user.age + " on Mars");
-				var lifeOnMars = new _scripts.Life(user.age, expectancy, remaining);
-				console.log(lifeOnMars);
-				lifeOnMars.yearsLeft();
-				console.log(lifeOnMars.remaining + " years left to live on Mars");
+				$("#output5").text("Your age is " + user.mars + " on Mars");
+				// const lifeOnMars = new Life(user.age, expectancy, remaining);
+				// console.log(lifeOnMars);
+				// lifeOnMars.yearsLeft();
+				// console.log(lifeOnMars.remaining + " years left to live on Mars");
 
 				//create jupiter life and set remaining property to years left on jupiter
 				user.toJupiter();
-				console.log("Your age is " + user.age + " on Jupiter");
-				var lifeOnJupiter = new _scripts.Life(user.age, expectancy, remaining);
-				console.log(lifeOnJupiter);
-				lifeOnJupiter.yearsLeft();
-				console.log(lifeOnJupiter.remaining + " years left to live on Jupiter");
+				$("#output6").text("Your age is " + user.jupiter + " on Jupiter");
+				// const lifeOnJupiter = new Life(user.age, expectancy, remaining);
+				// console.log(lifeOnJupiter);
+				// lifeOnJupiter.yearsLeft();
+				// console.log(lifeOnJupiter.remaining + " years left to live on Jupiter");
 		});
 
 		$("form#life").submit(function (event) {
