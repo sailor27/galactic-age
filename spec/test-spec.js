@@ -3,36 +3,50 @@ import { Age, User } from './../js/scripts.js';
 //test function to convert age in years to seconds
 describe('toSeconds', function(){
 	const years = 1;
-	let age = 0;
 	let currentAge;
 
 	beforeEach(function(){
-		currentAge = new Age(years, age);
+		currentAge = new Age(years);
 	});
 
-  it('should test whether inputtedAge converts to seconds', function(){
-    expect(currentAge.toSeconds(1)).toEqual(31556952);
+  it('should test whether inputted age converts to seconds', function(){
+		currentAge.toSeconds();
+    expect(currentAge.seconds).toEqual(31556952);
   });
 });
 
-
 describe('User', function() {
-	const birthday = '1990-06-27 20:45:00';
-	const today = '1990-06-27 20:45:00';
+	const birthday = Date.now();
+	// const birthday = new Date("06", "12", "27", "18", "00", "00", "00");
+	let testUser = new User(birthday);
 
-  let testUser;
+	beforeEach(function(){
+	});
 
-  beforeEach(function(){
-    testUser = new User(birthday, age);
-  });
+	it('should get the age by subtracting the inputted birthday from the date', function(){
+		expect(testUser.getAge()).toBeLessThan(26);
+		//note : The <26 refers to the difference in milliseconds between the two numbers that was occuring in the time the test takes to run
+	});
+});
+
+
+// describe('User', function() {
+// 	const birthday = '1990-06-27 20:45:00';
+// 	const today = '1990-06-27 20:45:00';
+//
+//   let testUser;
+//
+//   beforeEach(function(){
+//     testUser = new User(birthday, age);
+//   });
 
   // it('should test...', function(){
   //   expect(testUser.getAge()).toEqual(0);
   // });
   //
-  it('should test...', function(){
-    expect(testUser.toYears()).toEqual(0);
-  });
+  // it('should test...', function(){
+  //   expect(testUser.toYears()).toEqual(0);
+  // });
 
 
 //these need converted to years first?
@@ -50,5 +64,3 @@ describe('User', function() {
   // it('should test...', function(){
   //   expect(testUser.toJupiter()).toEqual(this.age / 11.86);
   // });
-
-});

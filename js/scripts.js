@@ -1,32 +1,31 @@
-//age in seconds
+//age in seconds - do not use
 export class Age {
 	constructor(years, seconds){
 	  this.years = years;
-	  this.seconds = seconds;
+//	this.seconds = years.toSeconds();
+
 	}
-	toSeconds(){
+	toSeconds() {
   	this.seconds = Math.floor(this.years * 31556952);
 	}
 };
-
+//still unsure if this correct (because seconds is undefined until toSeconds is called), but test passes
 
 ///////////////////////////////////////////////////////
 //testing for moment
 // var today = moment();
 // var sailor = moment('1990-06-27 14:49:55');
-
 //age constructor for age by birthday
 export class User {
-	constructor(birthday, age, expectancy, remaining){
+	constructor(birthday){
 	  this.birthday = birthday;
-	  this.age = age;
-		this.expectancy = expectancy;
-		this.remaining = remaining;
 	}
+	
 // get age using birthday and current date
 	getAge(){
-		var today = moment();
-  	this.age = today.diff(this.birthday, 'seconds');
+		const today = Date.now();
+		return (today - this.birthday);
+  	// return (this.today).diff(this.birthday, 'seconds');
 	}
 // convert age to years
 	toYears(){
