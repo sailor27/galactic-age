@@ -25,15 +25,16 @@ $(document).ready(function() {
 		const hours = $("#hour").val();
 		const minutes = "45";
 		const seconds = "55";
-		const milliseconds = "999";
+		const milliseconds = "0000";
 
 //set date to current time as the number of milliseconds since January 1, 1970 00:00:00 UTC
 		const date = Date.now(); //why do i have to define this in both?
 		console.log("TODAY: " + date);
 
 //create new birthday using inputted date
-		// const inputtedBirthday = new Date(year, month, day, hours, minutes, seconds, milliseconds); <----- the real constructor for birthdate
-		const inputtedBirthday = new Date("1990", "05", "27", "18", "00", "00");
+		const inputtedBirthday = new Date(year, month, day, hours, minutes, seconds, milliseconds);
+		// <----- the real constructor for birthdate
+		// const inputtedBirthday = new Date("1990", "05", "27", "18", "00", "00");
 		console.log("BIRTHDAY : " + inputtedBirthday);
 
 //convert birthday into a number representing number of milliseconds between birthday and January 1, 1970 00:00:00 UTC
