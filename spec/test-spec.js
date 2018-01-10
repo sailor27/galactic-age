@@ -1,4 +1,4 @@
-import { Age, User, toYears } from './../js/scripts.js';
+import { Age, User} from './../js/scripts.js';
 
 //test function to convert age in years to seconds
 describe('toSeconds', function(){
@@ -26,6 +26,13 @@ describe('User', function() {
 	it('should get the age by subtracting the inputted birthday from the date', function(){
 		testUser.getAge();
 		expect(testUser.age).toBeLessThan(28);
+	});
+
+	it('should get the life expectancy on earth by subtracting the age from the inputted national average', function(){
+		testUser.age = 1;
+		testUser.country = 78.24;
+		testUser.getLifeExpectancy();
+		expect(testUser.earthLife).toEqual(77.24);
 	});
 
 	it('should get the age on Mercury by dividing the age by 0.24', function(){

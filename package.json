@@ -1,7 +1,6 @@
 {
   "name": "galactic-age",
   "version": "1.0.0",
-  "description": "",
   "main": "index.js",
   "scripts": {
     "test": "karma start karma.conf.js"
@@ -41,5 +40,6 @@
     "vinyl-source-stream": "^2.0.0",
     "watchify": "^3.9.0"
   },
-  "dependencies": {}
+  "dependencies": {},
+  "description": ""
 }

@@ -13,32 +13,48 @@
       <div class="jumbotron">
         <h3>Well look at the time! </h3>
         <h3 id="time"></h3>
-
       </div>
-      <form id="age-form">
-				<h1>Age</h1>
-        <label for="age">Enter your age on Earth</label>
-        <input type="number" id="age" value="">
-        <button type="submit" name="button" class="btn">go</button>
-      </form>
       <form id="birthday-form">
-				<h1>How Old am I?</h1>
-        <!-- <label for="birthday">Enter your birthday in this format '1990-06-27 14:12:05'</label>
-        <input type="text" id="birthday" value=""> -->
+				<h2>Please Enter Your Birthday</h2>
+        <div class="form-group">
+          <label for="Month">Month</label>
+          <select class="form-control" id="month">
+            <option value = "00">01 January</option>
+            <option value = "01">02 February</option>
+            <option value = "02">03 March</option>
+            <option value = "03">04 April</option>
+            <option value = "04">05 May</option>
+            <option value = "05">06 June</option>
+            <option value = "06">07 July</option>
+            <option value = "07">08 August</option>
+            <option value = "08">09 September</option>
+            <option value = "09">10 October</option>
+            <option value = "10">11 November</option>
+            <option value = "11">12 December</option>
+          </select>
+        </div>
 
-        <label for="Month">Month</label>
-        <input type="text" id="month" value="">
-
+      <div class="form-group">
         <label for="day">Day</label>
-        <input type="text" id="day" value="">
+        <input type="text" id="day" value="" placeholder="01">
 
         <label for="year">Year</label>
-        <input type="text" id="year" value="">
+        <input type="text" id="year" value="" placeholder="1980">
 
         <label for="hour">Hour</label>
-        <input type="text" id="hour" value="">
+        <input type="text" id="hour" value="" placeholder="00">
+      </div>
 
-        <button type="submit" name="button"class="btn">go</button>
+      <div class="form-group">
+        <select id="country"class="custom-select" required>
+          <option value="">Where do you live?</option>
+          <option value="78.74">United States</option>
+          <option value="82.14">Canada</option>
+          <option value="83.84">Japan</option>
+        </select>
+      </div>
+
+      <button type="submit" name="button"class="btn-primary">go</button>
       </form>
 
 			<div id="output">
@@ -56,45 +72,24 @@
 			<div id="output6">
 			</div>
 
-      <div class="">
-				<h1>How many years do I have to live?</h1>
-        <h5>Enter information about yourself</h5>
-        <form id="life">
-					<div class="form-group">
-				    <select id="country"class="custom-select" required>
-				      <option value="">Where do you live?</option>
-				      <option value="78.74">United States</option>
-				      <option value="82.14">Canada</option>
-				      <option value="83.84">Japan</option>
-				    </select>
-				    <!-- <div class="invalid-feedback">Please select a location</div> -->
-				  </div>
-
-				  <div class="form-check">
-            <input class="form-check-input" type="radio" name="exampleRadios" id="smokes" value="-5" checked>
-            <label class="form-check-label" for="smokes">
-              Smokes Cigarettes
-            </label>
-          </div>
-          <div class="form-check">
-            <input class="form-check-input" type="radio" name="exampleRadios" id="diet" value="2">
-            <label class="form-check-label" for="diet">
-              Has a nutrious diet
-            </label>
-          </div>
-          <div class="form-check disabled">
-            <input class="form-check-input" type="radio" name="exampleRadios" id="oxygen" value="1" disabled>
-            <label class="form-check-label" for="oxygen">
-              Equipped with oxygen supply
-            </label>
-          </div>
-          <button type="submit" name="button"class="btn">go</button>
-        </form><!-- life form -->
-
+      <div class="life">
+        <h2>Calculate Life Expectancy</h2>
+        <h5>Life expectancy on each planet is based on national average</h5>
+        <div id="OP">
+        </div>
+        <div id="OP1">
+        </div>
+        <div id="OP2">
+        </div>
+        <div id="OP3">
+        </div>
+        <div id="OP4">
+        </div>
+        <div id="OP">
+        </div>
+        <div id="OP">
+        </div>
       </div>
     </div> <!-- container -->
-
-
-
   </body>
 </html>
