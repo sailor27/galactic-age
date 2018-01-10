@@ -1,43 +1,57 @@
-var Age = require('./../js/scripts.js').ageModule;
+import { Age, User} from './../js/scripts.js';
 
+//test function to convert age in years to seconds
 describe('toSeconds', function(){
-  it('should test whether inputtedAge in years is used to assign age in seconds', function(){
-    var currentAge = new Age(1, seconds);
-    expect(currentAge.toSeconds()).toEqual(31556952);
+	const years = 1;
+	let currentAge;
+
+	beforeEach(function(){
+		currentAge = new Age(years);
+	});
+
+  it('should test whether inputted age converts to seconds', function(){
+		currentAge.toSeconds();
+    expect(currentAge.seconds).toEqual(31556952);
   });
 });
-var Age2 = require('./../js/scripts.js').age2Module;
 
-describe('Age2', function() {
-  var age2Constructor;
+describe('User', function() {
+	// const birthday = Date.now();
+	const birthday = new Date("1990", "05", "27", "18", "00", "00");
+	let testUser = new User(birthday);
 
-  beforeEach(function(){
-    age2Constructor = new Age2('1990-06-27 14:49:55', age);
-  });
+	beforeEach(function(){
+	});
 
-  it('should test...', function(){
-    expect(age2Constructor.getAge()).toEqual(868672459);
-  });
+	it('should get the age by subtracting the inputted birthday from the date', function(){
+		testUser.getAge();
+		expect(testUser.age).toBeLessThan(28);
+	});
 
-  it('should test...', function(){
-    expect(age2Constructor.toYears()).toEqual(31556952);
-  });
+	it('should get the life expectancy on earth by subtracting the age from the inputted national average', function(){
+		testUser.age = 1;
+		testUser.country = 78.24;
+		testUser.getLifeExpectancy();
+		expect(testUser.earthLife).toEqual(77.24);
+	});
 
+	it('should get the age on Mercury by dividing the age by 0.24', function(){
+		testUser.toMercury();
+		expect(testUser.mercury).toBeLessThan(115);
+	});
 
-//these need converted to years first?
-  it('should test...', function(){
-    expect(age2Constructor.toMercury()).toEqual(this.age / .24);
-  });
+	it('should get the age on Venus by dividing the age by 0.62', function(){
+		testUser.toVenus();
+		expect(testUser.venus).toBeLessThan(45);
+	});
 
-  it('should test...', function(){
-    expect(age2Constructor.toVenus()).toEqual(this.age / .62);
-  });
+	it('should get the age on Mars by dividing the age by 1.88', function(){
+		testUser.toMars();
+		expect(testUser.mars).toBeLessThan(15);
+	});
 
-  it('should test...', function(){
-    expect(age2Constructor.toMars()).toEqual(this.age / 1.88);
-  });
-  it('should test...', function(){
-    expect(age2Constructor.toJupiter()).toEqual(this.age / 11.86);
-  });
-
+	it('should get the age on Jupiter by dividing the age by 11.86', function(){
+		testUser.toJupiter();
+		expect(testUser.jupiter).toBeLessThan(2.5);
+	});
 });

@@ -1,104 +1,166 @@
 (function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);var f=new Error("Cannot find module '"+o+"'");throw f.code="MODULE_NOT_FOUND",f}var l=n[o]={exports:{}};t[o][0].call(l.exports,function(e){var n=t[o][1][e];return s(n?n:e)},l,l.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(require,module,exports){
-//age in seconds
-function Age(years, seconds){
-  this.years = years;
-  this.seconds = seconds;
-}
+"use strict";
 
-Age.prototype.toSeconds = function(){
-  this.seconds = Math.floor(this.years * 31556952);
-};
+Object.defineProperty(exports, "__esModule", {
+	value: true
+});
 
-exports.ageModule = Age;
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+//age in seconds - do not use
+var Age = exports.Age = function () {
+	function Age(years) {
+		_classCallCheck(this, Age);
+
+		this.years = years;
+		//	this.seconds = years.toSeconds(); "error: is not a function"
+	}
+
+	_createClass(Age, [{
+		key: "toSeconds",
+		value: function toSeconds() {
+			this.seconds = Math.floor(this.years * 31556952);
+		}
+	}]);
+
+	return Age;
+}();
+
+;
 ///////////////////////////////////////////////////////
-//testing for moment
-var today = moment();
-var sailor = moment('1990-06-27 14:49:55');
-
 
 //age constructor for age by birthday
-function Age2(birthday, age){
-  this.birthday = birthday;
-  this.age = age;
-}
-// get age using birthday and current date
-Age2.prototype.getAge = function(){
-  this.age = today.diff(this.birthday, 'seconds');
-};
-// convert age to years
-Age2.prototype.toYears = function(){
-  this.age = (this.age / 31556952);
-};
 
-//calculate age on other planets
-Age2.prototype.toMercury = function(){
-  this.age = (this.age / 0.24);
-};
-Age2.prototype.toVenus = function(){
-  this.age = (this.age / 0.62);
-};
-Age2.prototype.toMars = function(){
-  this.age = (this.age / 1.88);
-};
-Age2.prototype.toJupiter = function(){
-  this.age = (this.age / 11.86);
-};
-//export age2 module
-exports.age2Module = Age2;
+var User = exports.User = function () {
+	function User(birthday, country) {
+		_classCallCheck(this, User);
+
+		this.birthday = birthday;
+		this.country = country;
+	}
+	// get age in years using birthday and current date
+
+
+	_createClass(User, [{
+		key: "getAge",
+		value: function getAge() {
+			var date = Date.now();
+			var age = date - this.birthday;
+			this.age = age / 31556952000;
+		}
+	}, {
+		key: "toSeconds",
+		value: function toSeconds() {
+			return Math.floor(this.age * 31556952);
+		}
+	}, {
+		key: "getLifeExpectancy",
+		value: function getLifeExpectancy() {
+			this.earthLife = this.country - this.age;
+		}
+		//calculate age on other planets
+
+	}, {
+		key: "toMercury",
+		value: function toMercury() {
+			this.mercury = this.age / 0.24;
+		}
+	}, {
+		key: "toVenus",
+		value: function toVenus() {
+			this.venus = this.age / 0.62;
+		}
+	}, {
+		key: "toMars",
+		value: function toMars() {
+			this.mars = this.age / 1.88;
+		}
+	}, {
+		key: "toJupiter",
+		value: function toJupiter() {
+			this.jupiter = this.age / 11.86;
+		}
+		// lifeMercury(){
+		// 	this.mercLife = (this. country - this.mercury);
+		// }
+
+	}]);
+
+	return User;
+}();
+
+;
 
 },{}],2:[function(require,module,exports){
-//test1
-var Age = require('./../js/scripts.js').ageModule;
-var Age2 = require('./../js/scripts.js').age2Module;
-// var Age = require('./../js/scripts.js').ageModule;
-$(document).ready(function() {
-  $("form#age-form").submit(function(event){
+"use strict";
+
+var _scripts = require("./../js/scripts.js");
+
+$(document).ready(function () {
+  $("form#birthday-form").submit(function (event) {
     event.preventDefault();
+    $(".life").show();
+    var year = $("#year").val();
+    var month = $("#month").val();
+    var day = $("#day").val();
+    var hours = $("#hour").val();
+    var minutes = "45";
+    var seconds = "55";
+    var milliseconds = "0000";
+    var selectedCountry = $("#country").val();
 
-//assign year based on user input and seconds as a placeholder
-    var inputtedAge = $("#age").val();
-    var seconds = seconds;
+    //set date to current time as the number of milliseconds since January 1, 1970 00:00:00 UTC
+    var date = Date.now(); //why do i have to define this in both?
 
-//make a new Age object
-    var currentAge = new Age(inputtedAge, seconds);
+    //create new birthday using inputted date
+    var inputtedBirthday = new Date(year, month, day, hours, minutes, seconds, milliseconds);
+    // ^ the real constructor for birthdate
+    // const inputtedBirthday = new Date("1990", "05", "27", "18", "00", "00");
+    // ^birthday for testing in browser
 
-//testing for Age constructor
-    console.log(inputtedAge);
-    console.log(currentAge);
+    //convert birthday into a number representing number of milliseconds between birthday and January 1, 1970 00:00:00 UTC
+    var weirdBirthday = inputtedBirthday.getTime();
 
-    currentAge.toSeconds();
-    console.log(currentAge);
+    //create new user with birthday
+    var user = new _scripts.User(weirdBirthday, selectedCountry);
+
+    //subtract user's birthday from current date, convert to years, and set number as age
+    user.getAge();
+    //log user's life expectancy on earth
+    user.getLifeExpectancy();
+    $("#OP").text("Your life expectancy on earth is: " + user.earthLife + "years");
+    //define age in seconds
+    var ageSeconds = user.toSeconds();
+
+    //format dates to display using moment
+    var dateDisplay = moment(date).format("dddd, MMMM Do YYYY, h:mm:ss a");
+    var birthdayDisplay = moment(user.birthday).format("dddd, MMMM Do YYYY, h:mm:ss a");
+
+    //output text displaying todays date and user's age in seconds
+    $("#output").text("Today is " + dateDisplay + ".");
+
+    $("#output1").text(" You have been alive for " + ageSeconds + " seconds on Earth.");
+    //output text displaying user's age in years
+    $("#output2").text("You have been alive for " + user.age + " years on Earth.");
+
+    //age on different planets
+    user.toMercury();
+    $("#output3").text("Your age is " + user.mercury + " on Mercury");
+    user.toVenus();
+    $("#output4").text("Your age is " + user.venus + " on Venus");
+    user.toMars();
+    $("#output5").text("Your age is " + user.mars + " on Mars");
+    user.toJupiter();
+    $("#output6").text("Your age is " + user.jupiter + " on Jupiter");
   });
 
-
-  $("form#birthday-form").submit(function(event){
-    event.preventDefault();
-    // var inputtedBirthday = $("#birthday").val();
-    // console.log(inputtedBirthday);
-    var inputtedBirthday = moment($("#birthday").val());
-    console.log(inputtedBirthday);
-    var yourAge = new Age2(inputtedBirthday, age);
-    var age = age;
-    console.log(yourAge);
-    yourAge.getAge();
-    console.log(yourAge.age + " seconds on Earth");
-    yourAge.toYears();
-    console.log(yourAge.age + " years on Earth");
-    yourAge.toMercury();
-    console.log(yourAge.age + " on Mercury");
-    yourAge.toVenus();
-    console.log(yourAge.age + " on Venus");
-    yourAge.toMars();
-    console.log(yourAge.age + " on Mars");
-    yourAge.toJupiter();
-    console.log(yourAge.age + " on Jupiter");
-  });
-//moment testing
+  //moment testing
   $('#time').text(moment());
-
-
 });
 
 //test2
+//test1
 
 },{"./../js/scripts.js":1}]},{},[2]);

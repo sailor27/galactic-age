@@ -21,9 +21,7 @@ var lib = require('bower-files')({
   }
 });
 var sourcemaps = require('gulp-sourcemaps');
-var moment = require('moment');
-moment().format();
-// var moment = require('moment');
+var babelify = require("babelify");
 
 //linter to run on all files in js folder//
 gulp.task('jshint', function(){
@@ -42,6 +40,9 @@ gulp.task('concatInterface', function() {
 //make all files ready for the browser//
 gulp.task('jsBrowserify', ['concatInterface'], function() {
   return browserify({ entries: ['./tmp/allConcat.js'] })
+		.transform(babelify.configure({
+		 	presets: ["es2015"]
+	 	}))
     .bundle()
     .pipe(source('app.js'))
     .pipe(gulp.dest('./build/js'));

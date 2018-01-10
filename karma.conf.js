@@ -6,7 +6,8 @@ module.exports = function(config) {
     frameworks: ['jquery-3.2.1', 'jasmine', 'browserify'],
     files: [
       'js/*.js',
-      'spec/*-spec.js'
+      'spec/*-spec.js',
+			'bower_components/moment/moment.js'
     ],
     exclude: [
     ],
@@ -21,6 +22,10 @@ module.exports = function(config) {
       'karma-chrome-launcher',
       'karma-jasmine-html-reporter'
     ],
+		browserify: {
+		 debug: true,
+		 transform: [ [ 'babelify', {presets: ["es2015"]} ] ]
+	 },
 
     reporters: ['progress', 'kjhtml'],
     port: 9876,
