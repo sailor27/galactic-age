@@ -1,15 +1,3 @@
-//age in seconds - do not use
-export class Age {
-	constructor(years){
-	  this.years = years;
-//	this.seconds = years.toSeconds(); "error: is not a function"
-	}
-	toSeconds() {
-  	this.seconds = Math.floor(this.years * 31556952);
-	}
-};
-///////////////////////////////////////////////////////
-
 //age constructor for age by birthday
 export class User {
 	constructor(birthday, country){
@@ -41,7 +29,4 @@ export class User {
 	toJupiter(){
   	this.jupiter = (this.age / 11.86);
 	}
-	// lifeMercury(){
-	// 	this.mercLife = (this. country - this.mercury);
-	// }
-};
+}

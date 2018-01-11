@@ -1,28 +1,9 @@
-import { Age, User} from './../js/scripts.js';
-
-//test function to convert age in years to seconds
-describe('toSeconds', function(){
-	const years = 1;
-	let currentAge;
-
-	beforeEach(function(){
-		currentAge = new Age(years);
-	});
-
-  it('should test whether inputted age converts to seconds', function(){
-		currentAge.toSeconds();
-    expect(currentAge.seconds).toEqual(31556952);
-  });
-});
+import { User } from './../js/scripts.js';
 
 describe('User', function() {
-	// const birthday = Date.now();
 	const birthday = new Date("1990", "05", "27", "18", "00", "00");
 	let testUser = new User(birthday);
-
-	beforeEach(function(){
-	});
-
+	
 	it('should get the age by subtracting the inputted birthday from the date', function(){
 		testUser.getAge();
 		expect(testUser.age).toBeLessThan(28);
@@ -33,6 +14,11 @@ describe('User', function() {
 		testUser.country = 78.24;
 		testUser.getLifeExpectancy();
 		expect(testUser.earthLife).toEqual(77.24);
+	});
+
+	it('should return user age in seconds', function() {
+		testUser.age = 1;
+		expect(testUser.toSeconds()).toEqual(31556952);
 	});
 
 	it('should get the age on Mercury by dividing the age by 0.24', function(){

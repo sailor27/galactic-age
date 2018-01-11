@@ -10,13 +10,14 @@
   </head>
   <body>
     <div class="container">
-      <div class="jumbotron">
-        <h3>Well look at the time! </h3>
+      <div class="jumbotron text-center">
+        <h1>Galactic Age Calculator</h1>
+        <h3>The current time on Earth is... </h3>
         <h3 id="time"></h3>
       </div>
-      <form id="birthday-form">
-				<h2>Please Enter Your Birthday</h2>
-        <div class="form-group">
+      <form id="birthday-form" class="col-md-10" >
+        <h3>Please Enter Your Birthday</h3>
+        <div class="form-group form-horizontal">
           <label for="Month">Month</label>
           <select class="form-control" id="month">
             <option value = "00">01 January</option>
@@ -34,47 +35,51 @@
           </select>
         </div>
 
-      <div class="form-group">
-        <label for="day">Day</label>
-        <input type="text" id="day" value="" placeholder="01">
+        <div class="form-group center-block">
+          <label for="day">Day</label>
+          <input class="form-control" type="text" id="day" value="" placeholder="01 -Enter your birth day">
 
-        <label for="year">Year</label>
-        <input type="text" id="year" value="" placeholder="1980">
+          <label for="year">Year</label>
+          <input class="form-control" type="text" id="year" value="" placeholder="1980 - Enter your birth year">
 
-        <label for="hour">Hour</label>
-        <input type="text" id="hour" value="" placeholder="00">
-      </div>
+          <label for="hour">Hour</label>
+          <input class="form-control" type="text" id="hour" value="" placeholder="00 - Enter the hour you were born (ex. '18' = 6pm)">
+        </div>
 
-      <div class="form-group">
-        <select id="country"class="custom-select" required>
-          <option value="">Where do you live?</option>
-          <option value="78.74">United States</option>
-          <option value="82.14">Canada</option>
-          <option value="83.84">Japan</option>
-        </select>
-      </div>
+        <div class="form-group">
+          <select id="country" class="form-control" required>
+            <option value="">Where do you live?</option>
+            <option value="78.74">United States</option>
+            <option value="82.14">Canada</option>
+            <option value="83.84">Japan</option>
+          </select>
+        </div>
 
-      <button type="submit" name="button"class="btn-primary">go</button>
+        <button type="submit" name="button"class="btn-lg btn-success">Calculate!</button>
       </form>
 
-			<div id="output">
-			</div>
-			<div id="output1">
-			</div>
-			<div id="output2">
-			</div>
-			<div id="output3">
-			</div>
-			<div id="output4">
-			</div>
-			<div id="output5">
-			</div>
-			<div id="output6">
-			</div>
+      <div class="outputs">
+        <div id="output">
+        </div>
+        <div id="output1">
+        </div>
+        <div id="output2">
+        </div>
+        <div id="output3">
+        </div>
+        <div id="output4">
+        </div>
+        <div id="output5">
+        </div>
+        <div id="output6">
+        </div>
 
-      <div class="life">
-        <h2>Calculate Life Expectancy</h2>
+      </div>
+
+      <div class="life hidden">
+        <h2>Your Life Expectancy</h2>
         <h5>Life expectancy on each planet is based on national average</h5>
+
         <div id="OP">
         </div>
         <div id="OP1">
@@ -90,6 +95,8 @@
         <div id="OP">
         </div>
       </div>
+
+
     </div> <!-- container -->
   </body>
 </html>

@@ -9,30 +9,7 @@ var _createClass = function () { function defineProperties(target, props) { for 
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
-//age in seconds - do not use
-var Age = exports.Age = function () {
-	function Age(years) {
-		_classCallCheck(this, Age);
-
-		this.years = years;
-		//	this.seconds = years.toSeconds(); "error: is not a function"
-	}
-
-	_createClass(Age, [{
-		key: "toSeconds",
-		value: function toSeconds() {
-			this.seconds = Math.floor(this.years * 31556952);
-		}
-	}]);
-
-	return Age;
-}();
-
-;
-///////////////////////////////////////////////////////
-
 //age constructor for age by birthday
-
 var User = exports.User = function () {
 	function User(birthday, country) {
 		_classCallCheck(this, User);
@@ -82,16 +59,10 @@ var User = exports.User = function () {
 		value: function toJupiter() {
 			this.jupiter = this.age / 11.86;
 		}
-		// lifeMercury(){
-		// 	this.mercLife = (this. country - this.mercury);
-		// }
-
 	}]);
 
 	return User;
 }();
-
-;
 
 },{}],2:[function(require,module,exports){
 "use strict";
@@ -101,7 +72,7 @@ var _scripts = require("./../js/scripts.js");
 $(document).ready(function () {
   $("form#birthday-form").submit(function (event) {
     event.preventDefault();
-    $(".life").show();
+    $(".life").toggleClass("hidden");
     var year = $("#year").val();
     var month = $("#month").val();
     var day = $("#day").val();
@@ -112,13 +83,10 @@ $(document).ready(function () {
     var selectedCountry = $("#country").val();
 
     //set date to current time as the number of milliseconds since January 1, 1970 00:00:00 UTC
-    var date = Date.now(); //why do i have to define this in both?
+    var date = Date.now();
 
     //create new birthday using inputted date
     var inputtedBirthday = new Date(year, month, day, hours, minutes, seconds, milliseconds);
-    // ^ the real constructor for birthdate
-    // const inputtedBirthday = new Date("1990", "05", "27", "18", "00", "00");
-    // ^birthday for testing in browser
 
     //convert birthday into a number representing number of milliseconds between birthday and January 1, 1970 00:00:00 UTC
     var weirdBirthday = inputtedBirthday.getTime();
@@ -130,7 +98,7 @@ $(document).ready(function () {
     user.getAge();
     //log user's life expectancy on earth
     user.getLifeExpectancy();
-    $("#OP").text("Your life expectancy on earth is: " + user.earthLife + "years");
+    $("#OP").text("Your life expectancy on earth is: " + user.earthLife + " years");
     //define age in seconds
     var ageSeconds = user.toSeconds();
 
@@ -156,11 +124,10 @@ $(document).ready(function () {
     $("#output6").text("Your age is " + user.jupiter + " on Jupiter");
   });
 
-  //moment testing
+  //moment "clock"
   $('#time').text(moment());
 });
 
 //test2
-//test1
 
 },{"./../js/scripts.js":1}]},{},[2]);

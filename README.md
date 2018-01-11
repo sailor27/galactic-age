@@ -5,9 +5,9 @@ Sailor Winkelman
 
 The Galactic Age Calculator lets the user enter their birthday and see their age in solar years on different planets in the galaxy. It also returns information about their predicted life expectancy.
 
-##Setup/Installation
+## Setup/Installation
 
-* Visit[this page](https://sailor27.github.io/galactic-age/)
+* Visit [this page](https://sailor27.github.io/galactic-age/)
  on github
 
 * Clone repository
@@ -20,73 +20,83 @@ The Galactic Age Calculator lets the user enter their birthday and see their age
 
 ### Planning and Specs
 
+Passing Specs:
 
+Page will return user's age on earth using their birthdate.
+* Input: Birthdate as Month, Day, Year, Hour. ("1990", "05", "27", "18", "00", "00")
+* Output: User's age in years (~27.5)
+
+Page will calculate the user's life expectancy using their age and regional average.
+* Input: User's Birthdate, Country where user lives. (1, 78.24)
+* Output: Life expectancy in years. (77.24)
+
+Page will return user's age in seconds.
+* Input: User's age in years (1)
+* Output: User's age in seconds (31556952)
+
+Page will return user's age on Mercury using their age.
+* Input: (~27.5)
+* Output: (~115)
+
+Page will return user's age on Venus using their age.
+* Input: (~27.5)
+* Output: (~44.5)
+
+Page will return user's age on Mars using their age.
+* Input: (~27.5)
+* Output: (~14.6)
+
+Page will return user's age on Jupiter using their age.
+* Input: (~27.5)
+* Output: (~2)
+
+Future Enhancement Planning:
+
+* Page will include images of planets
+* Page will include custom CSS styles
+* Page will transition between planets using CSS animations
+* Page will round numbers to user-friendly number of decimal places
+* Page will be responsive at mobile, tablet and desktop screen sizes
+* Page will include more options for region
+
+
+### Technologies Used
+
+The following tools were used to create this project:
 
 ```
-Give examples
+[node.js] (https://nodejs.org/en/docs/) : package management and installation
 ```
 
-### Installing
-
-A step by step series of examples that tell you have to get a development env running
-
-Say what the step will be
-
 ```
-Give the example
+[bower] https://bower.io/docs/api/ : front end package management and installation
 ```
 
-And repeat
-
 ```
-until finished
+[gulp] https://gulpjs.com/ : automating development environment workflow (build, serve, lint)
 ```
 
-End with an example of getting some data out of the system or using it for a little demo
-
-## Running the tests
-
-Explain how to run the automated tests for this system
-
-### Break down into end to end tests
-
-Explain what these tests test and why
-
 ```
-Give an example
+[karma] https://karma-runner.github.io/2.0/index.html : unit testing
 ```
 
-### And coding style tests
-
-Explain what these tests test and why
-
 ```
-Give an example
+[moment] https://momentjs.com/ : date and time formatting
 ```
 
-## Deployment
+```
+[bootstrap] https://momentjs.com/ : basic styling
+```
 
-Add additional notes about how to deploy this on a live system
+* HTML
+* CSS
+* Javascript (ES6)
+* JQuery
 
-## Built With
 
-* [Dropwizard](http://www.dropwizard.io/1.0.2/docs/) - The web framework used
-* [Maven](https://maven.apache.org/) - Dependency Management
-* [ROME](https://rometools.github.io/rome/) - Used to generate RSS Feeds
+## Author
 
-## Contributing
-
-Please read [CONTRIBUTING.md](https://gist.github.com/PurpleBooth/b24679402957c63ec426) for details on our code of conduct, and the process for submitting pull requests to us.
-
-## Versioning
-
-We use [SemVer](http://semver.org/) for versioning. For the versions available, see the [tags on this repository](https://github.com/your/project/tags).
-
-## Authors
-
-* **Billie Thompson** - *Initial work* - [PurpleBooth](https://github.com/PurpleBooth)
-
-See also the list of [contributors](https://github.com/your/project/contributors) who participated in this project.
+ **Sailor Winkelman**
 
 ## License
 
@@ -94,6 +104,5 @@ This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md
 
 ## Acknowledgments
 
-* Hat tip to anyone who's code was used
-* Inspiration
-* etc
+* Thanks Tyler, Instructor at Epicodus
+* Shout out to [Luke Bertram] https://github.com/lukebertram for this [Resource] https://github.com/lukebertram/js-boilerplate/blob/master/JS_PROJECT_SETUP.md for working with gulp and node.js

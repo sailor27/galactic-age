@@ -1,10 +1,9 @@
-//test1
 import {User} from './../js/scripts.js';
 
 $(document).ready(function() {
   $("form#birthday-form").submit(function(event){
     event.preventDefault();
-    $(".life").show();
+    $(".life").toggleClass("hidden");
 		const year = $("#year").val();
 		const month = $("#month").val();
 		const day = $("#day").val();
@@ -15,13 +14,10 @@ $(document).ready(function() {
     const selectedCountry = $("#country").val();
 
 //set date to current time as the number of milliseconds since January 1, 1970 00:00:00 UTC
-		const date = Date.now(); //why do i have to define this in both?
+		const date = Date.now();
 
 //create new birthday using inputted date
 		const inputtedBirthday = new Date(year, month, day, hours, minutes, seconds, milliseconds);
-		// ^ the real constructor for birthdate
-		// const inputtedBirthday = new Date("1990", "05", "27", "18", "00", "00");
-    // ^birthday for testing in browser
 
 //convert birthday into a number representing number of milliseconds between birthday and January 1, 1970 00:00:00 UTC
 		const weirdBirthday = inputtedBirthday.getTime();
@@ -33,7 +29,7 @@ $(document).ready(function() {
     user.getAge();
 //log user's life expectancy on earth
     user.getLifeExpectancy();
-    $("#OP").text("Your life expectancy on earth is: " + user.earthLife + "years");
+    $("#OP").text("Your life expectancy on earth is: " + user.earthLife + " years");
 //define age in seconds
 		const ageSeconds = user.toSeconds();
 
@@ -59,6 +55,6 @@ $(document).ready(function() {
     $("#output6").text("Your age is " + user.jupiter + " on Jupiter");
   });
 
-//moment testing
+//moment "clock"
   $('#time').text(moment());
 });
