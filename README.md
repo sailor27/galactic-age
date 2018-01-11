@@ -65,27 +65,27 @@ Future Enhancement Planning:
 The following tools were used to create this project:
 
 ```
-[node.js] (https://nodejs.org/en/docs/) : package management and installation
+[node.js](https://nodejs.org/en/docs/) : package management and installation
 ```
 
 ```
-[bower] https://bower.io/docs/api/ : front end package management and installation
+[bower](https://bower.io/docs/api/) : front end package management and installation
 ```
 
 ```
-[gulp] https://gulpjs.com/ : automating development environment workflow (build, serve, lint)
+[gulp](https://gulpjs.com/) : automating development environment workflow (build, serve, lint)
 ```
 
 ```
-[karma] https://karma-runner.github.io/2.0/index.html : unit testing
+[karma](https://karma-runner.github.io/2.0/index.html) : unit testing
 ```
 
 ```
-[moment] https://momentjs.com/ : date and time formatting
+[moment](https://momentjs.com/) : date and time formatting
 ```
 
 ```
-[bootstrap] https://momentjs.com/ : basic styling
+[bootstrap](https://momentjs.com/) : basic styling
 ```
 
 * HTML
@@ -105,4 +105,4 @@ This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md
 ## Acknowledgments
 
 * Thanks Tyler, Instructor at Epicodus
-* Shout out to [Luke Bertram] https://github.com/lukebertram for this [Resource] https://github.com/lukebertram/js-boilerplate/blob/master/JS_PROJECT_SETUP.md for working with gulp and node.js
+* Shout out to [Luke Bertram](https://github.com/lukebertram) for this [Resource](https://github.com/lukebertram/js-boilerplate/blob/master/JS_PROJECT_SETUP.md) for working with gulp and node.js
