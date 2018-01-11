@@ -65,7 +65,7 @@ Future Enhancement Planning:
 The following tools were used to create this project:
 
 ```
-[node.js](https://nodejs.org/en/docs/) : package management and installation
+[ node.js ](https://nodejs.org/en/docs/) : package management and installation
 ```
 
 ```
